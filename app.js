@@ -6,7 +6,7 @@ const sharp = require("sharp");
 const app = express();
 app.use(cors());
 app.use(express.static(__dirname + "/output"));
-PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3002;
 
 const helperImage = (filePath, fileName, size = 300) => {
 	// return sharp(filePath).resize(size).toFile(`./optimized/${fileName}`);
@@ -14,7 +14,7 @@ const helperImage = (filePath, fileName, size = 300) => {
 		sharp(filePath)
 			.resize(size)
 			.webp({ quality: 50 })
-			// .toBuffer()
+			// .toBuffer() s
 			.toFile(`./output/${fileName}`)
 	);
 };
