@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.static(__dirname + "/output"));
 // const PORT = process.env.PORT || 3002;
-const PORT = process.env.$PORT;
+const PORT = process.env.PORT || 3002;
 
 const helperImage = (filePath, fileName, size = 300) => {
 	// return sharp(filePath).resize(size).toFile(`./optimized/${fileName}`);
@@ -31,6 +31,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+app.post("/", (req, res) => {
+	res.send("App run correctly");
+});
 
 app.post("/upload", upload.single("file"), (req, res) => {
 	helperImage(
