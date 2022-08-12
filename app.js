@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.static(__dirname + "/output"));
 // const PORT = process.env.PORT || 3002;
-const PORT = $PORT;
+const PORT = process.env.$PORT;
 
 const helperImage = (filePath, fileName, size = 300) => {
 	// return sharp(filePath).resize(size).toFile(`./optimized/${fileName}`);
